@@ -79,4 +79,4 @@ function getMovie(){
     .catch((err) => {
       console.log(err);
     });
-}
+  }
