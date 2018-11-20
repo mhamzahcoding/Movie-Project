@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Static directory
+//I made some changes to this so it would work, then moved the stylesheet into the public folder as well as our .js files
 app.use('/public',express.static(__dirname + "/public"));
 
 // Routes
