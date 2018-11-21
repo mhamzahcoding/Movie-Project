@@ -18,7 +18,18 @@
     <div class="container">
       <div id="movie" class="well"></div>
     </div>
-    
+    <form class="container text-center">
+
+			<div class="container">
+				<input class="col-10 my-2" id="nameInput" type="text" placeholder="username">
+				<input class="col-10 my-2 pb-5" id="commentInput" type="text" placeholder="comment">
+			</div>
+      <br>
+			<button type="button" class="btn btn-lrg btn-primary mb-5" id="commentBtn">SUBMIT</button>
+
+			<div id="submit">
+			</div>
+		</form
     <div class="container">
       <div id="comments">
       </div>
@@ -31,6 +42,18 @@
   <script src="../js/main.js"></script>
   <script>
     getMovie();
+  </script>
+  <script>
+      $("#commentBtn").on("click", function(event) {
+    event.preventDefault();
+
+    var allComments = {
+      Username: $("#nameInput").val().trim(),
+      Comment: $("#commentInput").val().trim()
+    }
+      $("#submit").append(allComments);
+    
+  });
   </script>
   </body>
 </html>
