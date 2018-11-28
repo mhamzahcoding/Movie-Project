@@ -7,3 +7,6 @@ JavaScript/jQuery app that fetches movie data from the OMDb API
 ```bash
 Run index.html on any server
 ```
+## Functionality
+
+User searches for movie
