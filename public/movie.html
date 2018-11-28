@@ -18,42 +18,36 @@
     <div class="container">
       <div id="movie" class="well"></div>
     </div>
-    <form class="container text-center">
-
-			<div class="container">
-				<input class="col-10 my-2" id="nameInput" type="text" placeholder="username">
-				<input class="col-10 my-2 pb-5" id="commentInput" type="text" placeholder="comment">
-			</div>
-      <br>
-			<button type="button" class="btn btn-lrg btn-primary mb-5" id="commentBtn">SUBMIT</button>
-
-			<div id="submit">
-			</div>
-		</form
     <div class="container">
-      <div id="comments">
+
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <p class="cool-font">Name</p>
+            <input class="form-control" type="text" id="author" placeholder="Enter Your Name">
+            <br>
+            <p class="cool-font">Review</p>
+            <textarea class="form-control" rows="3" id="review-box" placeholder="Enter Review Here!"></textarea>
+            <button id="review-submit" class="btn btn-lg pull-right">Submit!</button>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <h2>User Reviews</h2>
+            <hr>
+            <div id="review-area"></div>
+          </div>
+        </div>
+  
       </div>
-    </div>
-    <script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="../js/main.js"></script>
+  <script src="../public/js/main.js"></script>
   <script>
     getMovie();
   </script>
-  <script>
-      $("#commentBtn").on("click", function(event) {
-    event.preventDefault();
-
-    var allComments = {
-      Username: $("#nameInput").val().trim(),
-      Comment: $("#commentInput").val().trim()
-    }
-      $("#submit").append(allComments);
-    
-  });
-  </script>
+  <script src="../public/js/review.js"></script>
   </body>
 </html>

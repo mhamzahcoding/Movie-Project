@@ -1,6 +1,6 @@
 /* global moment */
 
-// When the page loads, grab and display all of our chirps
+// When the page loads, grab and display all of our reviews
 $.get("/api/all", function(data) {
 
     if (data.length !== 0) {
@@ -8,9 +8,9 @@ $.get("/api/all", function(data) {
       for (var i = 0; i < data.length; i++) {
   
         var row = $("<div>");
-        row.addClass("chirp");
+        row.addClass("review");
   
-        row.append("<p>" + data[i].name + " reviewd.. </p>");
+        row.append("<p>" + data[i].author + " reviewed.. </p>");
         row.append("<p>" + data[i].body + "</p>");
         row.append("<p>At " + moment(data[i].created_at).format("h:mma on dddd") + "</p>");
   
@@ -22,36 +22,40 @@ $.get("/api/all", function(data) {
   
   });
   
-  // When user chirps (clicks addBtn)
+  // When user reviews (clicks addBtn)
   $("#review-submit").on("click", function(event) {
     event.preventDefault();
   
-    // Make a newChirp object
-    var newChirp = {
-      author: $("#name-box").val().trim(),
+    // Make a newReview object
+    var newReview = {
+      author: $("#author").val().trim(),
       body: $("#review-box").val().trim(),
       created_at: moment().format("YYYY-MM-DD HH:mm:ss")
     };
   
-    console.log(newChirp);
+    console.log(newReview);
   
     // Send an AJAX POST-request with jQuery
-    $.post("/api/new", newChirp)
+    $.post("/api/new", newReview)
       // On success, run the following code
       .then(function() {
   
         var row = $("<div>");
-        row.addClass("chirp");
+        row.addClass("review");
   
-        row.append("<p>" + newChirp.author + " chirped: </p>");
-        row.append("<p>" + newChirp.body + "</p>");
-        row.append("<p>At " + moment(newChirp.created_at).format("h:mma on dddd") + "</p>");
+        row.append("<p>" + newReview.author + " reviewed: </p>");
+        row.append("<p>" + newReview.body + "</p>");
+        row.append("<p>At " + moment(newReview.created_at).format("h:mma on dddd") + "</p>");
   
         $("#review-area").prepend(row);
   
       });
   
     // Empty each input box by replacing the value with an empty string
-    $("#name-box").val("");
+    $("#author").val("");
     $("#review-box").val("");
   });
+  
+  
+  
+  
