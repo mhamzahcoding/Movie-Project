@@ -1,5 +1,9 @@
-var db = require ("../models");
+// Dependencies
+// =============================================================
+
 var axios = require ("axios");
+var connection = require("../config/connection.js");
+
 
 module.exports = function(app) {
     app.get("/api/movies", function(req, res){
@@ -11,9 +15,6 @@ module.exports = function(app) {
     });
   };
 
-  // Dependencies
-// =============================================================
-var connection = require("../config/connection.js");
 
 // Routes
 // =============================================================
