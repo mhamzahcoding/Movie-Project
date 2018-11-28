@@ -12,7 +12,11 @@ module.exports = function(app) {
   });
 
   // cms route loads cms.html
-  app.get("/movie", function(req, res) {
+  app.get("/movie.html", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/movie.html"));
+  });
+
+  app.get("/index.html", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 }

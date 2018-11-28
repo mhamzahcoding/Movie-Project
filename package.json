@@ -4,6 +4,7 @@
   "description": "JavaScript/jQuery app that fetches movie data from the OMDb API",
   "main": "server.js",
   "dependencies": {
+    "axios": "^0.18.0",
     "express": "^4.16.4",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.4"
