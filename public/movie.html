@@ -16,15 +16,14 @@
     </nav>
 
     <div class="container">
-        <div id="movie" class="well"></div>
-      </div>
-
+      <div id="movie" class="well"></div>
+    </div>
     <div class="container">
 
         <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
             <p class="cool-font">Name</p>
-            <input class="form-control" type="text" id="name-box" placeholder="Enter Your Name">
+            <input class="form-control" type="text" id="author" placeholder="Enter Your Name">
             <br>
             <p class="cool-font">Review</p>
             <textarea class="form-control" rows="3" id="review-box" placeholder="Enter Review Here!"></textarea>
@@ -39,12 +38,16 @@
             <div id="review-area"></div>
           </div>
         </div>
+  
       </div>
-
-      <script type="text/javascript" src="./js/main.js"></script>
-      <script type="text/javascript" src="./js/index.js"></script>
-      <script>
-        getMovie();
-      </script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="../public/js/main.js"></script>
+  <script>
+    getMovie();
+  </script>
+  <script src="../public/js/review.js"></script>
   </body>
 </html>
