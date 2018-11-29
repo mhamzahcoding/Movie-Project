@@ -1,4 +1,6 @@
 var axios = require ("axios");
+var connection = require("../config/connection.js");
+
 
 module.exports = function(app) {
 
@@ -12,9 +14,6 @@ module.exports = function(app) {
     });
   };
 
-  // Dependencies
-// =============================================================
-var connection = require("../config/connection.js");
 
 // Routes
 // =============================================================
