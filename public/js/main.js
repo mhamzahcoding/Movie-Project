@@ -10,7 +10,7 @@ $(document).ready(() => {
 });
 
 function getMovies(searchText){
-  axios.get('http://www.omdbapi.com?s='+searchText + "&y=&plot=short&apikey=trilogy")
+  axios.get('https://www.omdbapi.com?s='+searchText + "&y=&plot=short&apikey=trilogy")
     .then((response) => {
       console.log(response);
       let movies = response.data.Search;
@@ -35,25 +35,6 @@ function getMovies(searchText){
 }
 
   function movieSelected(id){
-<<<<<<< HEAD
-  sessionStorage.setItem('movieId', id);
-  window.location = 'movie.html';
-  return false;
-}
-
-function getMovie(id){
-  let movieId = sessionStorage.getItem('movieId');
-
-  axios.get("api/movies/" + id)
-    .then((response) => {
-      console.log(response);
-      let movie = response.data;
-
-      let output =`
-        <div class="row">
-          <div class="col-md-4">
-            <img src="${movie.Poster}" class="thumbnail">
-=======
     sessionStorage.setItem('movieId', id);
     window.location = 'movie.html';
     return false;
@@ -63,7 +44,7 @@ function getMovie(id){
     let movieId = sessionStorage.getItem('movieId');
     console.log(movieId);
   
-    axios.get('http://www.omdbapi.com?i='+ movieId + "&y=&plot=short&apikey=trilogy")
+    axios.get('https://www.omdbapi.com?i='+ movieId + "&y=&plot=short&apikey=trilogy")
       .then((response) => {
         console.log(response);
         let movie = response.data;
@@ -86,21 +67,7 @@ function getMovie(id){
                 <li class="list-group-item"><strong>Actors:</strong> ${movie.Actors}</li>
               </ul>
             </div>
->>>>>>> c108070e4a3ce32aa59151a396cd8039bb48ecec
-          </div>
-          <div class="col-md-8">
-            <h2>${movie.Title}</h2>
-            <ul class="list-group">
-              <li class="list-group-item"><strong>Genre:</strong> ${movie.Genre}</li>
-              <li class="list-group-item"><strong>Released:</strong> ${movie.Released}</li>
-              <li class="list-group-item"><strong>Rated:</strong> ${movie.Rated}</li>
-              <li class="list-group-item"><strong>IMDB Rating:</strong> ${movie.imdbRating}</li>
-              <li class="list-group-item"><strong>Director:</strong> ${movie.Director}</li>
-              <li class="list-group-item"><strong>Writer:</strong> ${movie.Writer}</li>
-              <li class="list-group-item"><strong>Actors:</strong> ${movie.Actors}</li>
-            </ul>
-          </div>
-<<<<<<< HEAD
+
         </div>
         <div class="row">
           <div class="well">
@@ -119,17 +86,3 @@ function getMovie(id){
       console.log(err);
     });
   }
-=======
-        `
-        ;
-        
-        
-  
-        $('#movie').html(output);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-  
->>>>>>> c108070e4a3ce32aa59151a396cd8039bb48ecec
