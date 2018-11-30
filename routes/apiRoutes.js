@@ -34,6 +34,7 @@ module.exports = function(app) {
     console.log("Review Data:");
     console.log(req.body);
 
+    // ///////////////////////////// req.body.movie_id// movie_id
     var dbQuery = "INSERT INTO reviews (author, body, created_at) VALUES (?,?,?)";
 
     connection.query(dbQuery, [req.body.author, req.body.body, req.body.created_at], function(err, result) {
