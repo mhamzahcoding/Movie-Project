@@ -13,6 +13,7 @@ module.exports = function(app) {
 
   // cms route loads cms.html
   app.get("/movie.html", function(req, res) {
+
     res.sendFile(path.join(__dirname, "../public/movie.html"));
   });
 
