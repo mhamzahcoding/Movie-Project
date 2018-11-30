@@ -28,19 +28,29 @@ module.exports = function(app) {
       res.json(result);
     });
   });
+  //Get reviews for a movie
+  app.get("/api/reviews/:movieId", function(req, res) {
+    var dbQuery = "SELECT * FROM reviews where movieId= ?";
+    console.log(req.params.movieId);
+    connection.query(dbQuery, [req.params.movieId], function(err, result) {
+      if (err) throw err;
+      res.json(result);
+      
+    });
+  });
 
   // Add a review
   app.post("/api/new", function(req, res) {
     console.log("Review Data:");
     console.log(req.body);
 
-    // ///////////////////////////// req.body.movie_id// movie_id
-    var dbQuery = "INSERT INTO reviews (author, body, created_at) VALUES (?,?,?)";
+    var dbQuery = "INSERT INTO reviews (author, body, created_at, movieId) VALUES (?,?,?,?)";
 
-    connection.query(dbQuery, [req.body.author, req.body.body, req.body.created_at], function(err, result) {
+    connection.query(dbQuery, [req.body.author, req.body.body, req.body.created_at, req.body.movieId], function(err, result) {
       if (err) throw err;
       console.log("Review Successfully Saved!");
       res.end();
     });
   });
 };
+
