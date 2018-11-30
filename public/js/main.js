@@ -18,7 +18,7 @@ function getMovies(searchText){
             <div class="well text-center">
               <img src="${movie.Poster}">
               <h5>${movie.Title}</h5>
-              <a onclick="getMovie('${movie.imdbID}')" class="btn btn-primary">Movie Details</a>
+              <a onclick="getMovie('${movie.imdbID}')" class="btn btn-primary" href= "/movie.html">Movie Details</a>
             </div>
           </div>
         `;
@@ -31,14 +31,14 @@ function getMovies(searchText){
     });
 }
 
-// function movieSelected(id){
-//   sessionStorage.setItem('movieId', id);
-//   // window.location = 'movie.html';
-//   return false;
-// }
+  function movieSelected(id){
+  sessionStorage.setItem('movieId', id);
+  window.location = 'movie.html';
+  return false;
+}
 
 function getMovie(id){
-  // let movieId = sessionStorage.getItem('movieId');
+  let movieId = sessionStorage.getItem('movieId');
 
   axios.get("api/movies/" + id)
     .then((response) => {

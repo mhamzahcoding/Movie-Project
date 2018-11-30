@@ -29,7 +29,7 @@ module.exports = function(app) {
   });
 
   // Add a review
-  app.post("/api/new", function(req, res) {
+  app.post("/api/new/", function(req, res) {
     console.log("Review Data:");
     console.log(req.body);
 
@@ -41,4 +41,6 @@ module.exports = function(app) {
       res.end();
     });
   });
+
+
 };
