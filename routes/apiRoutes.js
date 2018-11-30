@@ -1,16 +1,15 @@
-// Dependencies
-// =============================================================
-
 var axios = require ("axios");
 var connection = require("../config/connection.js");
 
 
 module.exports = function(app) {
-    app.get("/api/movies", function(req, res){
-      var title = req.query.search;
+
+    app.get("/api/movies/:id", function(req, res){
+      var id = req.params.id;
       // "/api/movies?search=movietitle"
-      axios.get("https://www.omdbapi.com/?t=" + title + "&y=&plot=short&apikey=trilogy").then(function(json) {
-        res.status(200).json(json);
+      axios.get("https://www.omdbapi.com/?i=" + id + "&y=&plot=short&apikey=trilogy").then(function(movie) {
+        console.log(movie.data)
+        res.json(movie.data);
       });
     });
   };
@@ -40,7 +39,7 @@ module.exports = function(app) {
   });
 
   // Add a review
-  app.post("/api/new", function(req, res) {
+  app.post("/api/new/", function(req, res) {
     console.log("Review Data:");
     console.log(req.body);
 
@@ -52,5 +51,7 @@ module.exports = function(app) {
       res.end();
     });
   });
+
+
 };
 

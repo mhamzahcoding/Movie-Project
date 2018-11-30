@@ -1,8 +1,3 @@
-/* global moment */
-console.log(imdbMovieId);
-
-
-
 // When the page loads, grab and display all of our reviews
 $.get("/api/reviews/" + sessionStorage.getItem('movieId'), function(data) {
 

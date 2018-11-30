@@ -2,41 +2,38 @@
 var imdbMovieId;
 
 $(document).ready(() => {
-    $('#searchForm').on('submit', (e) => {
-      let searchText = $('#searchText').val();
-      getMovies(searchText);
-      e.preventDefault();
-    });
-  });
-  
- 
-
-  function getMovies(){
+  $('#searchForm').on('submit', (e) => {
     let searchText = $('#searchText').val();
-    axios.get('http://www.omdbapi.com?s='+ searchText + "&y=&plot=short&apikey=trilogy")
-      .then((response) => {
-        console.log(response);
-        let movies = response.data.Search;
-        let output = '';
-        $.each(movies, (index, movie) => {
-          output += `
-            <div class="col-md-3">
-              <div class="well text-center">
-                <img src="${movie.Poster}">
-                <h5>${movie.Title}</h5>
-                <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="/movie.html">Movie Details</a>
-              </div>
+    getMovies(searchText);
+    e.preventDefault();
+  });
+});
+
+function getMovies(searchText){
+  axios.get('https://www.omdbapi.com?s='+searchText + "&y=&plot=short&apikey=trilogy")
+    .then((response) => {
+      console.log(response);
+      let movies = response.data.Search;
+      let output = '';
+      $.each(movies, (index, movie) => {
+        output += `
+          <div class="col-md-3">
+            <div class="well text-center">
+              <img src="${movie.Poster}">
+              <h5>${movie.Title}</h5>
+              <a onclick="getMovie('${movie.imdbID}')" class="btn btn-primary" href= "/movie.html">Movie Details</a>
             </div>
-          `;
-        });
-  
-        $('#movies').html(output);
-      })
-      .catch((err) => {
-        console.log(err);
+          </div>
+        `;
       });
-  }
-  
+
+      $('#movies').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
   function movieSelected(id){
     sessionStorage.setItem('movieId', id);
     window.location = 'movie.html';
@@ -47,7 +44,7 @@ $(document).ready(() => {
     let movieId = sessionStorage.getItem('movieId');
     console.log(movieId);
   
-    axios.get('http://www.omdbapi.com?i='+ movieId + "&y=&plot=short&apikey=trilogy")
+    axios.get('https://www.omdbapi.com?i='+ movieId + "&y=&plot=short&apikey=trilogy")
       .then((response) => {
         console.log(response);
         let movie = response.data;
@@ -70,25 +67,22 @@ $(document).ready(() => {
                 <li class="list-group-item"><strong>Actors:</strong> ${movie.Actors}</li>
               </ul>
             </div>
+
+        </div>
+        <div class="row">
+          <div class="well">
+            <h3>Plot</h3>
+            ${movie.Plot}
+            <hr>
+            <a href="http://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-primary">View IMDB</a>
+            <a href="index.html" class="btn btn-default">Go Back To Search</a>
           </div>
-          <div class="row">
-            <div class="well">
-              <h3>Plot</h3>
-              ${movie.Plot}
-              <hr>
-              <a href="http://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-primary">View IMDB</a>
-              <a href="index.html" class="btn btn-default">Go Back To Search</a>
-            </div>
-          </div>
-        `
-        ;
-        
-        
-  
-        $('#movie').html(output);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+        </div>
+      `;
+
+      $('#movie').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   }
-  
