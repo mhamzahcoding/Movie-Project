@@ -1,3 +1,6 @@
+
+var imdbMovieId;
+
 $(document).ready(() => {
     $('#searchForm').on('submit', (e) => {
       let searchText = $('#searchText').val();
@@ -6,6 +9,8 @@ $(document).ready(() => {
     });
   });
   
+ 
+
   function getMovies(){
     let searchText = $('#searchText').val();
     axios.get('http://www.omdbapi.com?s='+ searchText + "&y=&plot=short&apikey=trilogy")
@@ -55,6 +60,7 @@ $(document).ready(() => {
             <div class="col-md-8">
               <h2>${movie.Title}</h2>
               <ul class="list-group">
+                <li id="movie-id" data-id="${movie.imdbID}" style="display: none;"><strong>IMDB ID:</strong> ${movie.imdbID}</li>
                 <li class="list-group-item"><strong>Genre:</strong> ${movie.Genre}</li>
                 <li class="list-group-item"><strong>Released:</strong> ${movie.Released}</li>
                 <li class="list-group-item"><strong>Rated:</strong> ${movie.Rated}</li>
@@ -74,7 +80,10 @@ $(document).ready(() => {
               <a href="index.html" class="btn btn-default">Go Back To Search</a>
             </div>
           </div>
-        `;
+        `
+        ;
+        
+        
   
         $('#movie').html(output);
       })
