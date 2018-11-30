@@ -8,7 +8,7 @@ CREATE TABLE `reviews` (
   `body` VARCHAR( 255 ) NOT NULL,
   `movieId` VARCHAR (50) NOT NULL,
   `created_at` DATETIME NOT NULL,
-  PRIMARY KEY ( `id` ),
+  PRIMARY KEY ( `id` )
   
 );
 
