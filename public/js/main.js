@@ -21,7 +21,7 @@ function getMovies(searchText){
             <div class="well text-center">
               <img src="${movie.Poster}">
               <h5>${movie.Title}</h5>
-              <a onclick="getMovie('${movie.imdbID}')" class="btn btn-primary" href= "/movie.html">Movie Details</a>
+              <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href= "/movie.html">Movie Details</a>
             </div>
           </div>
         `;
