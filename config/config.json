@@ -2,11 +2,7 @@
   "development": {
     "username": "root",
     "password": "Maxima@2005..",
-<<<<<<< HEAD
-    "database": "chirpy",
-=======
     "database": "reviews_db",
->>>>>>> e18f0a975c03e3164b7cb3dcde8dad19759cd1bb
     "host": "localhost",
     "dialect": "mysql"
   },
